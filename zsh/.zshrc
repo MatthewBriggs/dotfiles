@@ -62,6 +62,7 @@ export TERM="xterm-256color"
 prompt bart
 
 export EDITOR="vim"
+export LESS="-RSMsi"
 
 
 bindkey -v
