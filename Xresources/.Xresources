@@ -1,0 +1,89 @@
+! Urxvt !
+URxvt*termName:        screen-256color
+URxvt*geometry:        104x34
+URxvt*background:      #222222
+URxvt*foreground:      #ffffff
+URxvt*cursorColor:     #335A80
+URxvt*urgentOnBell:    true
+URxvt*letterSpace:     -0.5
+!URxvt*renderFont:      true
+
+
+URxvt.iso14755 : false
+
+! Black
+*color0:   #000000
+*color8:   #555753
+
+! Red
+*color1:   #cc0000
+*color9:   #ef2929
+
+! Green
+*color2:   #4e9a06
+*color10:  #8ae234
+
+! Yellow
+*color3:   #998C00
+*color11:  #E0CD00
+
+! Blue
+*color4:   #3465a4
+*color12:  #729fcf
+
+! Magenta
+*color5:   #75507b
+*color13:  #ad7fa8
+
+! Cyan
+*color6:   #06989a
+*color14:  #34e2e2
+
+! White
+*color7:   #d3d7cf
+*color15:  #eeeeec
+
+
+! borderless and no scrollbar !
+URxvt*scrollBar_right: false
+URxvt*scrollBar:       false
+URxvt*internalBorder:  0
+
+
+! xft settings !
+Xft.dpi:               96
+Xft.antialias:         1
+Xft.rgba:              rgb
+Xft.autohint:          0
+Xft.lcdfilter:         lcddefault
+Xft.hinting:           1
+Xft.hintstyle:         hintfull
+
+! clickable links, etc. !
+URxvt.keysym.M-u:      perl:url-select:select_next
+URxvt.urlLauncher:     midori
+URxvt.underlineURLs:   true
+URxvt.matcher.button:  1
+URxvt.matcher.rend.0:  fg33 bg1
+
+! URxvt
+URxvt.font:xft:source code pro:medium:size=10
+URxvt.boldFont:xft:source code pro:medium:size=10
+
+xterm*VT100.translations: #override \
+							 <Key>Home: string("\033[1~")  \n\
+							  <Key>End: string("\033[4~")  \n\
+
+Xcursor.theme:         Neutral++
+Xcursor.size:          22
+
+! default fonts for xorg apps !
+*font: -*-fixed-medium-r-normal-*-*-130-*-*-*-*-iso10646-1
+*boldFont: -*-fixed-medium-r-normal-*-*-130-*-*-*-*-iso10646-1
+
+! xdvi !
+xdvi.shrinkFactor:     7
+xdvi.keepPosition:     True
+xdvi.gsAlpha:          True
+xdvi.gamma:            1.200000
+xdvi.geometry:         802x991

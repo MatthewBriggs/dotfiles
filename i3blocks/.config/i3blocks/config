@@ -1,0 +1,125 @@
+#i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+separator_block_width=15
+
+#[nowplay]
+#label= 
+#command=$HOME/.scripts/nowplay
+#interval=1
+#signal=
+#instance=
+#markup=
+#format=
+
+[Uptime]
+label=UP
+command=uptime | cut -c 11-20 | tr -d ',' | tr -d 'up'
+interval=59
+
+[Uptdates]
+label=▲
+command=apacman -Qu | grep -v ignored | wc -l
+interval=59
+
+[Pkgs]
+label=PKGS
+command=pacman -Q | wc -l
+interval=59
+
+[vbox]
+label=VBOX
+command=vboxmanage list runningvms | wc -l
+interval=5
+color=#06989a
+
+[memory]
+label=MEM
+command=/home/matt/.scripts/memory
+separator=false
+interval=30
+color=#00FF00
+
+#[swap]
+#label=SWAP
+#instance=swap
+#command=/usr/share/i3blocks/memory
+##interval=30
+
+[disk-home]
+instance=/
+label=
+command=/usr/share/i3blocks/disk
+interval=30
+
+#[ethernet]
+#label=E
+#instance=eth0
+##instance=enp0s25
+#command=/usr/share/i3blocks/network
+#color=#00FF00
+#interval=10
+
+#[cpu]
+#label=CPU
+#command=/usr/share/i3blocks/cpu_usage
+#interval=10
+#min_width=CPU: 100.00%
+#separator=false
+
+#[load]
+#command=/usr/share/i3blocks/load_average
+#interval=10
+
+[wireless]
+label=
+instance=wlan0
+instance=wlp2s0b1
+command=/$HOME/.scripts/wifi
+color=#998C00
+interval=5
+
+[ssid]
+command=echo "$(iw dev wlp2s0b1 link | grep SSID | cut -d " " -f2-)"
+color=#00FF00
+interval=5
+
+[volume]
+label=VOL
+label=
+instance=Master
+#instance=PCM
+command=/home/matt/.scripts/volume.sh
+interval=1
+signal=10
+
+
+[battery]
+label=BAT
+label=
+command=/home/matt/.scripts/battery.sh
+interval=10
+
+[time]
+command=date '+%a %e %b %Y %I:%M %p'
+interval=5
