@@ -54,6 +54,7 @@ END {
 
 	# short text
 	printf("%.f%%\n", pct)
+	#printf("%.f%%\n")
 
 	# color
 	if (pct > 90) {

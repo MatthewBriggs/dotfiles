@@ -48,13 +48,13 @@ command=pacman -Q | wc -l
 interval=59
 
 [vbox]
-label=VBOX
+label=VB
 command=vboxmanage list runningvms | wc -l
 interval=5
 color=#06989a
 
 [memory]
-label=MEM
+label=M
 command=/home/matt/.scripts/memory
 separator=false
 interval=30
@@ -121,5 +121,5 @@ command=/home/matt/.scripts/battery.sh
 interval=10
 
 [time]
-command=date '+%a %e %b %Y %I:%M %p'
+command=date '+%a %e %b %I:%M%p'
 interval=5
