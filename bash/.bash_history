@@ -1,69 +1,3 @@
-vim ~/.config/i3status/config 
-vim /etc/modprobe.d/modprobe.conf
-cd /etc/modprobe.d/
-ls
-ls -a
-vim /etc/modprobe.d/50-sound.conf
-sudo vim /etc/modprobe.d/50-sound.conf
-alsamixer
-sudo vim /etc/modprobe.d/50-sound.conf
-sudo vim /etc/modprobe.d/50-sound.conf
-sudo pacman -S rofi
-vim ~/.config/i3blocks/config 
-vim ~/.config/sway/config 
-vim ~/.config/i3blocks/config 
-vim ~/.config/i3blocks/config 
-vim ~/.config/sway/config 
-sudo pacman -S rofi
-vim ~/.config/sway/config 
-rofi
-rofi -h
-rofi -dmenu
-vim ~/.config/sway/config 
-sudo vim ~/.config/sway/config 
-iw
-ip addr
-pacman -S iw
-sudo pacman -S iw
-iw
-ip addr
-ip iw wlp2s0b1
-iw wlp2s0b1
-iw
-iw -help
-man iw
-ip addr
-/usr/lib/i3blocks/iface
-man 5 sway
-man wayland
-output
-swaymsg -t get_outputs
-man 5 sway
-uname -a
-alsi -u -a
-sway
-man 5 sway
-pacman -Syu
-sudo pacman -Syu
-vim ~/.config/i3blocks/config 
-vim ~/.config/i3blocks/config 
-vim ~/.config/i3blocks/config 
-sudo apacman -Syu
-sudo apacman -S hipchat
-command=/usr/lib/i3blocks/battery
-/usr/lib/i3blocks/battery
-pacman -S acpi
-sudo pacman -S acpi
-/usr/lib/i3blocks/battery
-pacman -Syu
-sudo pacman -Syu
-pacman -Q
-pacman -U
-sudo Pacman -Syu
-sudo pacman -Sy
-sudo apacman -Qu
-sudo apacman -Qu
-sudo apacman -Qu | wc -l
 pacman -Qtdq
 pacman -Rns (pacman -Qtdq(
 pacman -Rns (pacman -Qtdq)
@@ -497,4 +431,70 @@ exit
 exit
 exit
 exit
+exit
+help
+exit
+exit
+help
+exit
+ls
+exit
+env
+pwd
+echo $PWD
+echo $PS1
+cd /
+exit
+ls
+pwd
+pwd
+cd ..
+cd ..
+cd ..
+pwd
+exit
+cd /
+exit
+cd /
+ls
+CONFIGLINE="hello"
+echo $CONFIGLINE
+if [ $CONFIGLINE -ne "default" ]; then echo "not equal"; fi
+if [ $CONFIGLINE -ne 'default' ]; then echo "not equal"; fi
+if [ $CONFIGLINE!='default' ]; then echo "not equal"; fi
+cd /tmp/mspacman/libinput/
+ls
+rm -rf *
+cd ../
+cd /tmp
+ls
+cd mspacman
+ls
+cd libinput/
+ls
+less PKGBUILD
+less PKGBUILD.orig
+cd /etc/mspacman
+ls
+cd /etc/mspacman.conf.d.disabled/
+mv gtk ../mspacman.conf.d/
+ls
+mv gtk3 ../mspacman.conf.d/
+sudo mv gtk3 ../mspacman.conf.d/
+cd /tmp/mspacman/
+ls
+cd gtk3
+ls
+less PKGBUILDr
+less PKGBUILD
+less PKGBUILD
+cd ../gtk3
+less PKGBUILD
+less PKGBUILD
+less ../gtk3/PKGBUILD
+cd ../gtk3
+less PKGBUILD
+cd ..
+less gtk3/PKGBUILD | grep default
+less gtk3/PKGBUILD
 exit

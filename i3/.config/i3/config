@@ -53,9 +53,10 @@ bindsym $mod+Return exec urxvtc
 
 # start apps
 bindsym $mod+Control+F exec env MOZ_USE_OMTC=1 firefox
-bindsym $mod+Control+G exec geary
-bindsym $mod+Control+T exec nohup telegram-desktop &
-bindsym $mod+Control+S exec nohup spotify --force-device-scale-factor=1.0000001
+bindsym $mod+Control+3 exec nohup telegram-desktop &
+bindsym $mod+Control+4 exec nohup spotify --force-device-scale-factor=1.0000001
+bindsym $mod+Control+5 exec thunderbird
+bindsym $mod+Control+6 exec google-chrome
 bindsym $mod+Control+V exec urxvt -e vim
 bindsym $mod+Control+H exec urxvt -e htop
 bindsym $mod+Control+R exec urxvt -e ranger

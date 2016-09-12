@@ -1,0 +1,48 @@
+#!/bin/bash
+
+ABSLOCATION="/var/abs/"
+BUILDLOCATION="/tmp/mspacman"
+PACKAGES=`ls /etc/mspacman.conf.d`
+PKGCONFIGLOC="/etc/mspacman.conf.d/"
+USER="matt"
+
+#abs
+rm -rf /tmp/mspacman
+
+mkdir -p $BUILDLOCATION
+
+for PACKAGE in $PACKAGES; do
+	PACKAGELOCATION=`find $ABSLOCATION -name $PACKAGE`
+	echo $PACKAGELOCATION
+	cp -R $PACKAGELOCATION $BUILDLOCATION/$PACKAGE
+	PKGBUILD=$BUILDLOCATION/$PACKAGE/PKGBUILD
+
+	#kill deps
+	KILLDEPS=`cat $PKGCONFIGLOC/$PACKAGE | cut -d '=' -f 2 | cut -d$'\n' -f1`
+	echo $KILLDEPS
+	
+	KILLDEPS=$(echo $KILLDEPS | tr "," "\n") #create array
+
+	for KILLDEP in $KILLDEPS; do #remove dependencies
+		sed -i "s/$KILLDEP/ /" $PKGBUILD
+	done
+	#end kill deps phase
+	
+	CONFIGLINE=`cat $PKGCONFIGLOC/$PACKAGE | cut -d$'\n' -f3 | cut -d ':' -f2`
+	#echo $CONFIGLINE
+	
+	if [ "$CONFIGLINE"=='default' ]; then
+		echo "NO COMPILE OPTIONS SELECTED"
+	else
+		sed -ir "s:.*./configure.*:$CONFIGLINE:g" $PKGBUILD
+	fi
+
+	echo "groups=('modified')" >> $PKGBUILD #generates warning on attempted update of unmodified package
+	
+	cd $BUILDLOCATION/$PACKAGE
+
+	makepkg -s -i --skippgpcheck
+	
+done
+
+#rm -rf $BUILDLOCATION

@@ -1,0 +1,45 @@
+{
+    "layout": "splith",
+    "percent": 0.4,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "none",
+            "name": "firefox",
+            "percent": 0.75,
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Firefox$"
+                }
+            ]
+        },
+        {
+            "layout": "splitv",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "name": "urxvt",
+                    "percent": 0.5,
+                    "type": "con",
+                    "swallows": [
+                        {
+                            "class": "^URxvt$"
+                        }
+                    ]
+                },
+                {
+                    "name": "urxvt",
+                    "percent": 0.5,
+                    "type": "con",
+                    "swallows": [
+                        {
+                            "class": "^URxvt$"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
