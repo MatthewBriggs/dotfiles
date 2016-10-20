@@ -1,0 +1,34 @@
+#!/bin/bash
+
+WGETURL=ftp://ftp.freedesktop.org/pub/mesa/12.0.1/mesa-12.0.1.tar.xz
+CONF="--prefix=/usr --enable-udev"
+ARCHIVE=`echo $WGETURL | rev | cut -d '/' -f1 | rev`
+sleep 5 && echo $ARCHIVE
+FOLDER=`basename $ARCHIVE .tar.bz2`
+sleep 5 && echo $FOLDER
+
+cd /sources
+
+##############
+# Pre-flight #
+##############
+
+wget http://www.linuxfromscratch.org/patches/blfs/7.10/mesa-12.0.1-add_xdemos-1.patch
+
+
+#############
+#############
+
+wget $WGETURL
+
+tar -xf $ARCHIVE
+
+cd $FOLDER
+sleep 5
+./configure $CONF || exit 1
+
+make -j5
+
+allpkg
+
+exit 0
