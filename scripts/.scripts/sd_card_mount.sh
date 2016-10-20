@@ -14,3 +14,14 @@
 swapon /dev/mmcblk0p2
 
 exit 0
+[Unit]
+Description=service file for sd_card_mount.sh
+
+[Service]
+ExecStart=/home/matt/.scripts/sd_card_mount.sh
+Type=oneshot
+User=root
+
+[Install]
+WantedBy=multi-user.target
+

@@ -73,3 +73,6 @@ bindkey '^R' history-incremental-search-backward
 alias reboot="sudo systemctl reboot"
 alias shutdown="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
+
+
+alias wine='schroot -pd "$(pwd)" -- wine'
