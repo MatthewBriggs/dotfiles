@@ -6,13 +6,29 @@ PACKAGES=`ls /etc/mspacman.conf.d`
 PKGCONFIGLOC="/etc/mspacman.conf.d/"
 USER="matt"
 
-#abs
+if [ $1 == "-n" ]; then
+	touch $PKGCONFIGLOC/$2
+	echo "Please enter dependencies to remove"
+	echo "NOTE: this will not affect the compile options"
+	echo "EXAMPLE: foo bar other"
+	read "> " DEPSTOKILL
+
+	echo "killdeps=$DEPSTOKILL" >> $PKGCONFIGLOC/$2	
+	echo "" >> $PKGCONFIGLOC/$2
+	echo "configureline: default" >> $PKGCONFIGLOC/$2
+fi
+
 rm -rf /tmp/mspacman
 
 mkdir -p $BUILDLOCATION
 
 for PACKAGE in $PACKAGES; do
-	PACKAGELOCATION=`find $ABSLOCATION -name $PACKAGE`
+	PACKAGELOCATION=`find $ABSLOCATION/testing -name $PACKAGE`
+	
+	if [ "$PACKAGELOCATION" == "" ]; then
+		PACKAGELOCATION=`find $ABSLOCATION -name $PACKAGE` 
+	fi
+
 	echo $PACKAGELOCATION
 	cp -R $PACKAGELOCATION $BUILDLOCATION/$PACKAGE
 	PKGBUILD=$BUILDLOCATION/$PACKAGE/PKGBUILD
@@ -24,14 +40,19 @@ for PACKAGE in $PACKAGES; do
 	KILLDEPS=$(echo $KILLDEPS | tr "," "\n") #create array
 
 	for KILLDEP in $KILLDEPS; do #remove dependencies
-		sed -i "s/$KILLDEP/ /" $PKGBUILD
+		sed -i "s/$KILLDEP/ /g" $PKGBUILD
+		sed -i "s:'': :g" $PKGBUILD
 	done
 	#end kill deps phase
 	
+	#this whole section needs work
+	#replacing configlines is dead easy, but some applications have
+	#these flags referenced differently. Temporary workaround is letting
+	#the user edit the PKGBUILD manually
 	CONFIGLINE=`cat $PKGCONFIGLOC/$PACKAGE | cut -d$'\n' -f3 | cut -d ':' -f2`
-	#echo $CONFIGLINE
+	echo $CONFIGLINE
 	
-	if [ "$CONFIGLINE"=='default' ]; then
+	if [ "$CONFIGLINE" == "default" ]; then
 		echo "NO COMPILE OPTIONS SELECTED"
 	else
 		sed -ir "s:.*./configure.*:$CONFIGLINE:g" $PKGBUILD
@@ -40,9 +61,11 @@ for PACKAGE in $PACKAGES; do
 	echo "groups=('modified')" >> $PKGBUILD #generates warning on attempted update of unmodified package
 	
 	cd $BUILDLOCATION/$PACKAGE
+	
+	$EDITOR $PKGBUILD #allow user to make final changes to makepkg
 
 	makepkg -s -i --skippgpcheck
 	
 done
 
-#rm -rf $BUILDLOCATION
+exit 0

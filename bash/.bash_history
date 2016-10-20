@@ -1,6 +1,3 @@
-pacman -Qtdq
-pacman -Rns (pacman -Qtdq(
-pacman -Rns (pacman -Qtdq)
 pacman -Rns $(pacman -Qtdq)
 sudo pacman -Rns $(pacman -Qtdq)
 sudo pacman -Q
@@ -497,4 +494,7 @@ less PKGBUILD
 cd ..
 less gtk3/PKGBUILD | grep default
 less gtk3/PKGBUILD
+exit
+ls
+sed -r "s:.*./configure.*:CONFIGLINE:g" PKGBUILD
 exit
