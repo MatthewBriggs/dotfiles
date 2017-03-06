@@ -74,5 +74,5 @@ alias reboot="sudo systemctl reboot"
 alias shutdown="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
 
+export ABSROOT=.
 
-alias wine='schroot -pd "$(pwd)" -- wine'

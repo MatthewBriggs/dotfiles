@@ -30,8 +30,8 @@
   set $transparent #00000000
 
 smart_gaps on
-gaps inner 10
-#gaps outer 20px
+gaps inner 7
+#gaps outer 1
 
 set $mod Mod4
 
@@ -52,9 +52,9 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvtc
 
 # start apps
-bindsym $mod+Control+F exec env MOZ_USE_OMTC=1 firefox
-bindsym $mod+Control+3 exec nohup telegram-desktop &
-bindsym $mod+Control+4 exec nohup spotify --force-device-scale-factor=1.0000001
+bindsym $mod+Control+F exec env MOZ_USE_OMTC=1 firejail-firefox
+bindsym $mod+Control+3 exec nohup telegram &
+bindsym $mod+Control+4 exec nohup /usr/bin/local/spotify --force-device-scale-factor=1.0000001
 bindsym $mod+Control+5 exec thunderbird
 bindsym $mod+Control+6 exec google-chrome
 bindsym $mod+Control+V exec urxvt -e vim
@@ -62,6 +62,8 @@ bindsym $mod+Control+H exec urxvt -e htop
 bindsym $mod+Control+R exec urxvt -e ranger
 bindsym $mod+Control+N exec urxvt -e ncdu /
 bindsym $mod+Control+W exec urxvt -e sudo wifi-menu
+
+bindsym $mod+Control+L exec /usr/local/bin/i3lock-blur
 #Volume Keys
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 1dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 1dB- unmute
@@ -303,6 +305,8 @@ exec urxvtd -f
 exec env MOZ_USE_OMTC=1 firefox
 exec dunst
 exec_always compton --config /home/matt/.config/compton/compton.conf
+exec nextcloud
+exec pommed
 
 #auto back-and-forth
 workspace_auto_back_and_forth yes
