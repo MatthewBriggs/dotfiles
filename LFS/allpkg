@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#drop in replacement for make install commands
+mkdir $(pwd)/PACKAGE
+
+make install DESTDIR=$(pwd)/PACKAGE
+cd $(pwd)/PACKAGE
+
+pkgname=`echo $PWD | rev | cut -d '/' -f2 | rev`
+
+makepkg -l y -c n ../$pkgname.tgz
+installpkg ../$pkgname.tgz
